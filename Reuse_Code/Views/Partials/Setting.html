@@ -1,0 +1,52 @@
+﻿<div id="wrapper" ng-class=" {false:'', true:'active'}[hasactiveclass==true]">
+    <!-- Sidebar -->
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper" class="col-lg-4 col-md-3 col-sm-2 col-xs-1">
+        <ul id="sidebar_menu" class="sidebar-nav">
+            <li class="sidebar-brand"><a id="menu-toggle" class="mousepointer" ng-click="ApplyClass()">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify "></span></a></li>
+        </ul>
+        <ul class="sidebar-nav" id="sidebar">
+            <li><a>Link1</a></li>
+            <li><a>link2</a></li>
+        </ul>
+
+    </div>
+    <!-- Page content -->
+    <div id="page-content-wrapper" class="col-lg-8 col-md-9 col-sm-10 col-xs-11 main" style="padding-left: 52px; top: 35px; ">
+        <!-- Keep all page content within the page-content inset div! -->
+        <div class="page-content inset">
+
+            <div>
+                <h1 class="page-header">Dashboard</h1>
+                
+                <h2>Section title</h2>
+                <div class="table">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Header</th>
+                                <th>Header</th>
+                                <th>Header</th>
+                                <th>Header</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in content" ng-show="showcontent">
+                                <td>{{data.CustomerName}}</td>
+                                <td>{{data.ContactName}}</td>
+                                <td>{{data.Address}}</td>
+                                <td>{{data.City}}</td>
+                                <td>{{data.postalCode}}</td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

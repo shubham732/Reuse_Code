@@ -849,6 +849,7 @@
     <Content Include="ASSET\Scripts\angular-aria.min.js.map" />
     <Content Include="ASSET\Scripts\angular-animate.min.js.map" />
     <Content Include="ASSET\Scripts\angular.min.js.map" />
+    <Content Include="xssa.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
