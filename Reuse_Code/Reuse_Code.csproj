@@ -58,8 +58,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ASSET\Content\font-awesome-4.6.3\css\font-awesome.css" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\css\font-awesome.min.css" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\fonts\fontawesome-webfont.svg" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\HELP-US-OUT.txt" />
     <Content Include="Controller\NavigationCtrl.js" />
     <Content Include="CSS\Loader.css" />
+    <Content Include="CSS\Option.css" />
     <Content Include="Services\AppService.js" />
     <Content Include="Views\Partials\Setting.html" />
     <Content Include="Views\Partials\webService.asmx" />
@@ -850,6 +855,39 @@
     <Content Include="ASSET\Scripts\angular-animate.min.js.map" />
     <Content Include="ASSET\Scripts\angular.min.js.map" />
     <Content Include="xssa.html" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\fonts\fontawesome-webfont.eot" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\fonts\fontawesome-webfont.ttf" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\fonts\fontawesome-webfont.woff" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\fonts\fontawesome-webfont.woff2" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\fonts\FontAwesome.otf" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\animated.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\bordered-pulled.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\core.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\fixed-width.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\font-awesome.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\icons.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\larger.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\list.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\mixins.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\path.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\rotated-flipped.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\screen-reader.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\stacked.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\less\variables.less" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\font-awesome.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_animated.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_bordered-pulled.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_core.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_fixed-width.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_icons.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_larger.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_list.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_mixins.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_path.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_rotated-flipped.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_screen-reader.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_stacked.scss" />
+    <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_variables.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

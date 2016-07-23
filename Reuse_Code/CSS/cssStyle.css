@@ -39,3 +39,7 @@ body{margin:50px;}
 .panel-collapse>.list-group .list-group-item {border-width: 1px 0;}
 .panel-collapse>.list-group {margin-bottom: 0;}
 .panel-collapse .list-group-item {border-radius:0;}
+
+.inheritwidth{
+    font-size:1vw;
+}
