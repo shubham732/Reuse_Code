@@ -36,7 +36,9 @@
     width:100%;
     vertical-align:middle;
 }
-
+ .btn{
+     display:block;
+ }
 .btn-dark{
 	border-radius: 0;
 	color: #fff;
@@ -221,7 +223,7 @@ Social Accordion Styling
 */
 .nav-stacked > li > a {
     position: relative;
-	display: block;
+	/*display: block;*/
 	padding: 0;
 	margin: 0;
 

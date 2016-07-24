@@ -43,3 +43,7 @@ body{margin:50px;}
 .inheritwidth{
     font-size:1vw;
 }
+.accordion-social
+{
+    float:right;
+}
