@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Script.Services;
 using System.Web.Services;
 
-namespace CourseraCssResponsive
+namespace Reuse_Code
 {
     /// <summary>
     /// Summary description for webService
@@ -19,12 +19,23 @@ namespace CourseraCssResponsive
     public class webService : System.Web.Services.WebService
     {
 
+
+      
+
         [WebMethod]
-     
-        public  object  HelloWorld()
+
+        public List<Files> SelectedReuseTypeInfo(string ReuseName)
         {
-            //return Logic.GetData();
-            return null;
+            return Logic.SelectedReuseTypeInfo(ReuseName);
+
+        }
+
+        [WebMethod]
+
+        public List<tbl_ReuseData> FetchSelectedClassData(int classID)
+        {
+            return Logic.FetchSelectedClassData(classID);
+
         }
     }
 }

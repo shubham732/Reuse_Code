@@ -7,11 +7,14 @@
 
     <!--utilities-->
     <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="ASSET/Content/font-awesome-4.6.3/css/font-awesome.css" rel="stylesheet" />
+    <link href="../ASSET/Content/font-awesome-4.6.3/css/font-awesome.css" rel="stylesheet" />
+
     <script src="../ASSET/Scripts/jquery-1.9.1.min.js"></script>
     <script src="../ASSET//Scripts/bootstrap.min.js"></script>
     <script src="../ASSET//Scripts/angular.min.js"></script>
     <script src="../ASSET/Scripts/angular-route.min.js"></script>
+    <script src="../ASSET/Scripts/angular-sanitize.min.js"></script>
+  
 
 
     <!--Style-->
@@ -19,14 +22,15 @@
     <link href="../CSS/SideBar.css" rel="stylesheet" />
     <link href="CSS/Loader.css" rel="stylesheet" />
     <link href="../CSS/flatly.css" rel="stylesheet" />
-    
     <link href="CSS/Option.css" rel="stylesheet" />
 
     <!--Code-->
     <script src="../Controller/App.js"></script>
     <script src="../Controller/MainCtrl.js"></script>
     <script src="../Controller/NavigationCtrl.js"></script> 
+    <script src="../Controller/IOCtrl.js"></script>
     <script src="Services/AppService.js"></script>
+    <script src="../Controller/ClassContainer.js"></script>
 </head>
 <body ng-app="myApp" style=" "  ng-controller="NavigationCtrl"> <!--ng-class="{false:'', true:''}[frezzeBackground==true]">-->
     <div class="container-fluid">
@@ -50,55 +54,71 @@
 
             </div>
             <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom:0px">
-               
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" >Reuse &nbsp;<span class=" glyphicon glyphicon-retweet"></span>&nbsp;  Code</a>
-                    </div>
 
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li class="active" ng-click="navigateTo('Dashboard')" style="cursor:pointer"><a >Wrapper <span class="sr-only">(current)</span></a></li>
-                            <li style="cursor:pointer"><a ng-click="navigateTo('Setting')">I/O</a></li>
-                            <li class=" disabled" style="cursor:pointer"><a href="#">Profile</a></li>
-                            <li class=" disabled" style="cursor:pointer"><a href="#">Help</a></li>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">Reuse &nbsp;<span class=" glyphicon glyphicon-retweet"></span>&nbsp;  Code</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li ng-click="navigateTo('Wrapper')" style="cursor:pointer" ng-class="{false:'' ,true:'active' }[switchActivity == 'Wrapper']"><a>Wrapper <span class="sr-only">(current)</span></a></li>
+                        <li style="cursor:pointer" class="disabled"  ><a>I/O</a></li><!--ng-class="{false:'' ,true:'active ' }[switchActivity == 'I/O']"--><!--ng-click="navigateTo('I/O')"-->
+                        <li class=" disabled" style="cursor:pointer"><a>Profile</a></li>
+                        <li class=" disabled" style="cursor:pointer"><a>Help</a></li>
 
 
-                        </ul>
-                        <form class="navbar-form navbar-right" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </div>
+                    </ul>
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
 
-                        </form>
+                    </form>
 
-                    </div>
-              
+                </div>
+
             </nav>
-
+            <div class="col-sm-2 col-md-2 col-xs-2" style="top:100px">
+                <div class="panel-group" id="accordion" style=" position: fixed; top: 100px; width: 15%;">
+                    <div class="panel panel-default" ng-repeat="data in WrapperClassesInfo">
+                        <div class="panel-heading mousepointer">
+                            <h4 class="panel-title ">
+                                <a data-toggle="collapse" data-parent="#accordion" data-target="#{{data.ReuseSubType}} ">
+                                    <span class="glyphicon glyphicon-folder-close ">
+                                    </span>{{data.ReuseSubType}}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="{{data.ReuseSubType}}" class="panel-collapse collapse in">
+                            <ul class="list-group ">
+                                <li class="list-group-item mousepointer" ng-init="showclassname=clsname.classname" ng-repeat="clsname in data.fileinfo"><a ng-click="LoadClassContent('WrapperClassContainer',clsname.ID)" class="inheritwidth ">{{clsname.filename}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div ng-view=""></div>
-        </div>
-    </div>
-    
-        <script>
+            <script>
 
-            $(window).resize(function () {
-                if ($("#page-content-wrapper").width() <= 570) {
-                    if ($("#wrapper").hasClass("active")) {
-                        $("#wrapper").removeClass("active");
+                $(window).resize(function () {
+                    if ($("#page-content-wrapper").width() <= 570) {
+                        if ($("#wrapper").hasClass("active")) {
+                            $("#wrapper").removeClass("active");
+                        }
+
                     }
-
-                }
-                else if ($("#page-content-wrapper").width() > 600) {
-                    $("#wrapper").addClass("active");
-                }
-            });
-        </script>
+                    else if ($("#page-content-wrapper").width() > 600) {
+                        $("#wrapper").addClass("active");
+                    }
+                });
+            </script>
 
 </body>
 

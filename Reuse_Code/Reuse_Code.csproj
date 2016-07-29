@@ -38,6 +38,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -62,10 +70,15 @@
     <Content Include="ASSET\Content\font-awesome-4.6.3\css\font-awesome.min.css" />
     <Content Include="ASSET\Content\font-awesome-4.6.3\fonts\fontawesome-webfont.svg" />
     <Content Include="ASSET\Content\font-awesome-4.6.3\HELP-US-OUT.txt" />
+    <Content Include="ASSET\Content\Medium.css" />
+    <Content Include="ASSET\Scripts\Medium.js" />
+    <Content Include="Controller\ClassContainer.js" />
+    <Content Include="Controller\IOCtrl.js" />
     <Content Include="Controller\NavigationCtrl.js" />
     <Content Include="CSS\Loader.css" />
     <Content Include="CSS\Option.css" />
     <Content Include="Services\AppService.js" />
+    <Content Include="Views\Partials\Sample.html" />
     <Content Include="Views\Partials\Setting.html" />
     <Content Include="Views\Partials\webService.asmx" />
     <Content Include="Controller\App.js" />
@@ -854,6 +867,7 @@
     <Content Include="ASSET\Scripts\angular-aria.min.js.map" />
     <Content Include="ASSET\Scripts\angular-animate.min.js.map" />
     <Content Include="ASSET\Scripts\angular.min.js.map" />
+    <Content Include="Views\Partials\ClassContainer.html" />
     <Content Include="xssa.html" />
     <Content Include="ASSET\Content\font-awesome-4.6.3\fonts\fontawesome-webfont.eot" />
     <Content Include="ASSET\Content\font-awesome-4.6.3\fonts\fontawesome-webfont.ttf" />
@@ -888,6 +902,23 @@
     <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_screen-reader.scss" />
     <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_stacked.scss" />
     <Content Include="ASSET\Content\font-awesome-4.6.3\scss\_variables.scss" />
+    <EntityDeploy Include="ASSET\entity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>entity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ASSET\entity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>entity.edmx</DependentUpon>
+      <LastGenOutput>entity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ASSET\entity.edmx.diagram">
+      <DependentUpon>entity.edmx</DependentUpon>
+    </Content>
+    <Content Include="ASSET\entity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>entity.edmx</DependentUpon>
+      <LastGenOutput>entity.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -926,6 +957,31 @@
     <Content Include="ASSET\Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ASSET\entity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>entity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSET\entity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSET\entity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>entity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ASSET\tbl_CoustomerDetails.cs">
+      <DependentUpon>entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSET\tbl_ReuseData.cs">
+      <DependentUpon>entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ASSET\tbl_ReuseNameInfo.cs">
+      <DependentUpon>entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="business Layer\Files.cs" />
     <Compile Include="business Layer\Logic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Partials\webService.asmx.cs">

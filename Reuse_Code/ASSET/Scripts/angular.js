@@ -12791,7 +12791,7 @@ function LocationHashbangUrl(appBase, appBaseNoFile, hashPrefix) {
       Matches paths for file protocol on windows,
       such as /C:/foo/bar, and captures only /foo/bar.
       */
-      var windowsFilePathExp = /^\/[A-Z]:(\/.*)/;
+      var windowsFileDataExp = /^\/[A-Z]:(\/.*)/;
 
       var firstPathSegmentMatch;
 
@@ -12801,11 +12801,11 @@ function LocationHashbangUrl(appBase, appBaseNoFile, hashPrefix) {
       }
 
       // The input URL intentionally contains a first path segment that ends with a colon.
-      if (windowsFilePathExp.exec(url)) {
+      if (windowsFileDataExp.exec(url)) {
         return path;
       }
 
-      firstPathSegmentMatch = windowsFilePathExp.exec(path);
+      firstPathSegmentMatch = windowsFileDataExp.exec(path);
       return firstPathSegmentMatch ? firstPathSegmentMatch[1] : path;
     }
   };

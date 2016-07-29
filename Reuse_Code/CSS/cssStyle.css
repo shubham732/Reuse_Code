@@ -47,3 +47,7 @@ body{margin:50px;}
 {
     float:right;
 }
+.mousepointer
+{
+    cursor:pointer;
+}

@@ -1,45 +1,45 @@
-﻿var myapp = angular.module("myApp", ['ngRoute']);
+﻿var myapp = angular.module("myApp", ['ngSanitize','ngRoute']);
 
     myapp.config(['$routeProvider',
                       function ($routeProvider) {
                           $routeProvider
-                            .when('/Home', {
-                                templateUrl: 'Views/Partials/Container.html',
-                                controller: 'myctrl'
-                            })
-                              .when('/Dashboard', {
+                            
+                              .when('/Wrapper', {
                                   templateUrl: 'Views/Partials/Container.html',
                                   controller: 'myctrl'
                               })
-                               .when('/Setting', {
+                               .when('/I/O', {
                                    templateUrl: 'Views/Partials/Setting.html',
-                                   controller: 'myctrl'
+                                   controller: 'inputoutputctrl'
                                })
-                              
+                              .when('/Sample', {
+                                  templateUrl: 'Views/Partials/Sample.html',
+                                  controller: 'myctrl'
+                              })
+                               .when('/Container', {
+                                   templateUrl: 'Views/Partials/Sample.html',
+                                   controller: ''
+                               })
+                              .when('/WrapperClassContainer/:ID', {
+                                  templateUrl: 'Views/Partials/ClassContainer.html',
+                                  controller: 'ClassContainerCtrl'
+                              })
                             .otherwise({
-                                redirectTo: '/Home'
+                                redirectTo: '/Wrapper'
                             });
                       }]);
-    //myapp.controller()
-    //myapp.run(function ($rootScope) {
-    //    $.ajax
-    //       ({
-    //           type: "POST",
-    //           async: true,
-    //           url: "Views/Partials/webService.asmx/HelloWorld",
-    //           contentType: "application/json; charset=utf-8",
-    //           dataType: "json",
-               
-    //           success: function (a) {
-    //               var data = JSON.parse(JSON.stringify(a.d));
-    //               $rootScope.content = data;
-
-
-                   
-    //           },
-    //           error: function (r) {
-    //               alert("Failed Configure Airplane");
-                
-    //           }
-    //       });
-    //});
+    
+    myapp.run(function ($rootScope, $location) {
+        $rootScope.$on('$routeChangeStart', function (event, next, current) {
+            if (!current) {
+                $location.url('/Wrapper');
+            }
+        });
+    })
+    myapp.filter('breakFilter', function () {
+        return function (text) {
+            if (text !== undefined) return text.replace(/\n/g, '<br />');
+        };
+    });
+  
+  

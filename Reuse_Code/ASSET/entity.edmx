@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ResponsivewebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_CoustomerDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="postalCode" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_ReuseData">
+          <Key>
+            <PropertyRef Name="S.no" />
+          </Key>
+          <Property Name="S.no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReuseId" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FileData" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_ReuseNameInfo">
+          <Key>
+            <PropertyRef Name="S.no" />
+          </Key>
+          <Property Name="S.no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReuseType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tbl_ReuseData_tbl_ReuseData">
+          <End Role="tbl_ReuseNameInfo" Type="Self.tbl_ReuseNameInfo" Multiplicity="1" />
+          <End Role="tbl_ReuseData" Type="Self.tbl_ReuseData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ReuseNameInfo">
+              <PropertyRef Name="S.no" />
+            </Principal>
+            <Dependent Role="tbl_ReuseData">
+              <PropertyRef Name="ReuseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ResponsivewebModelStoreContainer">
+          <EntitySet Name="tbl_CoustomerDetails" EntityType="Self.tbl_CoustomerDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ReuseData" EntityType="Self.tbl_ReuseData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ReuseNameInfo" EntityType="Self.tbl_ReuseNameInfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_ReuseData_tbl_ReuseData" Association="Self.FK_tbl_ReuseData_tbl_ReuseData">
+            <End Role="tbl_ReuseNameInfo" EntitySet="tbl_ReuseNameInfo" />
+            <End Role="tbl_ReuseData" EntitySet="tbl_ReuseData" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ResponsivewebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_CoustomerDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="postalCode" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_ReuseData">
+          <Key>
+            <PropertyRef Name="S_no" />
+          </Key>
+          <Property Name="S_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReuseId" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_ReuseNameInfo" Relationship="Self.FK_tbl_ReuseData_tbl_ReuseData" FromRole="tbl_ReuseData" ToRole="tbl_ReuseNameInfo" />
+        </EntityType>
+        <EntityType Name="tbl_ReuseNameInfo">
+          <Key>
+            <PropertyRef Name="S_no" />
+          </Key>
+          <Property Name="S_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReuseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_ReuseData" Relationship="Self.FK_tbl_ReuseData_tbl_ReuseData" FromRole="tbl_ReuseNameInfo" ToRole="tbl_ReuseData" />
+        </EntityType>
+        <Association Name="FK_tbl_ReuseData_tbl_ReuseData">
+          <End Role="tbl_ReuseNameInfo" Type="Self.tbl_ReuseNameInfo" Multiplicity="1" />
+          <End Role="tbl_ReuseData" Type="Self.tbl_ReuseData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ReuseNameInfo">
+              <PropertyRef Name="S_no" />
+            </Principal>
+            <Dependent Role="tbl_ReuseData">
+              <PropertyRef Name="ReuseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ResponsivewebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_CoustomerDetails" EntityType="Self.tbl_CoustomerDetails" />
+          <EntitySet Name="tbl_ReuseData" EntityType="Self.tbl_ReuseData" />
+          <EntitySet Name="tbl_ReuseNameInfo" EntityType="Self.tbl_ReuseNameInfo" />
+          <AssociationSet Name="FK_tbl_ReuseData_tbl_ReuseData" Association="Self.FK_tbl_ReuseData_tbl_ReuseData">
+            <End Role="tbl_ReuseNameInfo" EntitySet="tbl_ReuseNameInfo" />
+            <End Role="tbl_ReuseData" EntitySet="tbl_ReuseData" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ResponsivewebModelStoreContainer" CdmEntityContainer="ResponsivewebEntities">
+          <EntitySetMapping Name="tbl_CoustomerDetails">
+            <EntityTypeMapping TypeName="ResponsivewebModel.tbl_CoustomerDetails">
+              <MappingFragment StoreEntitySet="tbl_CoustomerDetails">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ReuseData">
+            <EntityTypeMapping TypeName="ResponsivewebModel.tbl_ReuseData">
+              <MappingFragment StoreEntitySet="tbl_ReuseData">
+                <ScalarProperty Name="S_no" ColumnName="S.no" />
+                <ScalarProperty Name="ReuseId" ColumnName="ReuseId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileData" ColumnName="FileData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ReuseNameInfo">
+            <EntityTypeMapping TypeName="ResponsivewebModel.tbl_ReuseNameInfo">
+              <MappingFragment StoreEntitySet="tbl_ReuseNameInfo">
+                <ScalarProperty Name="S_no" ColumnName="S.no" />
+                <ScalarProperty Name="ReuseType" ColumnName="ReuseType" />
+                <ScalarProperty Name="SubType" ColumnName="SubType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

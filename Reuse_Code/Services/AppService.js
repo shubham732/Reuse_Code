@@ -1,5 +1,5 @@
 ﻿var AppService = angular.module('myApp')
-.factory('AppService', function ($rootScope) {
+.factory('AppService', function ($rootScope, $location) {
     return {
         ShowLoader: function () {
 
@@ -120,7 +120,11 @@
                     })
                 }, time);
             })();
-        }
+        },
+        navigateTo : function (viewurl) {
+        $location.url('/' + viewurl);
+        $rootScope.switchActivity = viewurl
+    }
 
     };
 });
