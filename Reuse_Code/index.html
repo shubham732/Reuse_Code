@@ -20,9 +20,11 @@
     <!--Style-->
     <link href="../CSS/cssStyle.css" rel="stylesheet" />
     <link href="../CSS/SideBar.css" rel="stylesheet" />
-    <link href="CSS/Loader.css" rel="stylesheet" />
+    <link href="CSS/ReuseLoader.css" rel="stylesheet" />
     <link href="../CSS/flatly.css" rel="stylesheet" />
     <link href="CSS/Option.css" rel="stylesheet" />
+    
+    <link href="CSS/ReuseSubtypeLoader.css" rel="stylesheet" />
 
     <!--Code-->
     <script src="../Controller/App.js"></script>
@@ -35,7 +37,9 @@
 <body ng-app="myApp" style=" "  ng-controller="NavigationCtrl"> <!--ng-class="{false:'', true:''}[frezzeBackground==true]">-->
     <div class="container-fluid">
         <div class="row">
-            <div class="cssload-loader" ng-show="loaderVisibility">
+            
+           
+            <!--<div class="cssload-loader" ng-if="ReuseLoaderVisibility">
 
                 <div class="cssload-dots">
                     <div class="cssload-dot"></div>
@@ -52,7 +56,7 @@
                     just a moment...
                 </div>
 
-            </div>
+            </div>-->
             <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom:0px">
 
                 <div class="navbar-header">
@@ -68,7 +72,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li ng-click="navigateTo('Wrapper')" style="cursor:pointer" ng-class="{false:'' ,true:'active' }[switchActivity == 'Wrapper']"><a>Wrapper <span class="sr-only">(current)</span></a></li>
-                        <li style="cursor:pointer" class="disabled"  ><a>I/O</a></li><!--ng-class="{false:'' ,true:'active ' }[switchActivity == 'I/O']"--><!--ng-click="navigateTo('I/O')"-->
+                        <li style="cursor:pointer" class="disabled"><a>I/O</a></li><!--ng-class="{false:'' ,true:'active ' }[switchActivity == 'I/O']"--><!--ng-click="navigateTo('I/O')"-->
                         <li class=" disabled" style="cursor:pointer"><a>Profile</a></li>
                         <li class=" disabled" style="cursor:pointer"><a>Help</a></li>
 
@@ -97,14 +101,16 @@
                         </div>
                         <div id="{{data.ReuseSubType}}" class="panel-collapse collapse in">
                             <ul class="list-group ">
-                                <li class="list-group-item mousepointer" ng-init="showclassname=clsname.classname" ng-repeat="clsname in data.fileinfo"><a ng-click="LoadClassContent('WrapperClassContainer',clsname.ID)" class="inheritwidth ">{{clsname.filename}}</a></li>
+                                <li ng-repeat="clsname in data.fileinfo" ng-class="{false:'list-group-item mousepointer' ,true:'subtypeactive list-group-item mousepointer'}[toggleObject.index == $index && toggleObject.subtype == data.ReuseSubType]" ng-click="LoadClassContent('WrapperClassContainer',clsname.ID);toggleObject.index = $index;toggleObject.subtype = data.ReuseSubType"><a style="font-size:.8vw">{{clsname.filename}}</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div ng-view=""></div>
+        </div>
+    </div>
             <script>
 
                 $(window).resize(function () {

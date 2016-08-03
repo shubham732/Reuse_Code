@@ -40,8 +40,8 @@ body{margin:50px;}
 .panel-collapse>.list-group {margin-bottom: 0;}
 .panel-collapse .list-group-item {border-radius:0;}
 
-.inheritwidth{
-    font-size:1vw;
+.inheritFontSize{
+    font-size:.9vw;
 }
 .accordion-social
 {
@@ -50,4 +50,15 @@ body{margin:50px;}
 .mousepointer
 {
     cursor:pointer;
+}
+.contentborder
+{
+    border:1px solid rgb(44, 62, 80);
+    outline:0px solid transparent;
+}
+.list-group-item.subtypeactive, .list-group-item.subtypeactive:hover, .list-group-item.subtypeactive:focus, .list-group-item.subtypeactive a{
+   
+    color: #ffffff;
+    background-color: #2c3e50;
+    border-color: #2c3e50;
 }

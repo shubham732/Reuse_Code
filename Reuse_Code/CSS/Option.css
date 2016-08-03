@@ -8,7 +8,7 @@
 	font-family: 'FontAwesome';
 	/* essential for enabling glyphicon */
 	content:"\f078";
-    position:absolute;
+    /*position:absolute;*/
     top:0;
     bottom:0;
     right:5%;

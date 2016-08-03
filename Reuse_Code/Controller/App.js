@@ -5,7 +5,7 @@
                           $routeProvider
                             
                               .when('/Wrapper', {
-                                  templateUrl: 'Views/Partials/Container.html',
+                                  templateUrl: 'Views/Partials/WrapperHome.html',
                                   controller: 'myctrl'
                               })
                                .when('/I/O', {

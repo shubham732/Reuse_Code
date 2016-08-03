@@ -1,6 +1,7 @@
 ﻿myapp.controller("NavigationCtrl", function ($scope, $rootScope, AppService,$location) {
 
     $scope.switchActivity = "Wrapper";
+    $scope.toggleObject = { index: -1,subtype:'nil' };
     //$scope.hasactiveclass = true;
     //$scope.ApplyClass = function () {
 
@@ -18,7 +19,7 @@
     //}
     function getdata()
     {
-        AppService.ShowLoader();
+        AppService.ShowLoader('ReuseLoader');
         $.ajax
          ({
              type: "POST",
@@ -32,7 +33,7 @@
                  var data = JSON.parse(JSON.stringify(a.d));
                  $scope.$apply(function () {
                      $scope.WrapperClassesInfo = data;
-                     AppService.HideLoader();
+                     AppService.HideLoader('ReuseLoader');
                  });
 
 
@@ -52,9 +53,9 @@
         $scope.switchActivity = viewurl;
         $scope.ClassName = classname;
     }
-    $scope.LoadClassContent = function (viewurl,ID) {
+    $scope.LoadClassContent = function (viewurl, ID) {
         $location.url("/" + viewurl + "/" + ID);
-        $scope.switchActivity = viewurl;
+        //clsname.switchActivityforsubcategory = !clsname.switchActivityforsubcategory;
         //$scope.ClassName = classname;
     }
 });

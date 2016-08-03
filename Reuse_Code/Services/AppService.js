@@ -1,12 +1,19 @@
 ﻿var AppService = angular.module('myApp')
 .factory('AppService', function ($rootScope, $location) {
     return {
-        ShowLoader: function () {
+        ShowLoader: function (text) {
 
             (function () {
                 setTimeout(function () {
                     $rootScope.$apply(function () {
-                        $rootScope.loaderVisibility = true;
+                        if (text == 'ReuseLoader')
+                        {
+                            $rootScope.ReuseLoaderVisibility = true;
+                        }
+                        else if (text == 'ReuseSubtypeLoader')
+                        {
+                            $rootScope.ReuseSubtypeLoaderVisibility = true;
+                        }
                         $rootScope.showcontent = false;
                         var mask = $('<div></div>')
       .css({
@@ -30,11 +37,16 @@
                 }, 0);
             })();
         },
-        HideLoader: function () {
+        HideLoader: function (text) {
             (function () {
                 setTimeout(function () {
                     $rootScope.$apply(function () {
-                        $rootScope.loaderVisibility = false;
+                        if (text == 'ReuseLoader') {
+                            $rootScope.ReuseLoaderVisibility = false;
+                        }
+                        else if (text == 'ReuseSubtypeLoader') {
+                            $rootScope.ReuseSubtypeLoaderVisibility = false;
+                        }
                         $rootScope.showcontent = true;
                         var mask = $('#pageloadercontroller')
       //.css({
@@ -46,15 +58,20 @@
                         //.on('click')
                         .remove();
                     })
-                },1000);
+                },2000);
             })();
         },
-        LoadTimer: function (time) {
+        LoadTimer: function (text,time) {
 
             (function () {
                 setTimeout(function () {
                     $rootScope.$apply(function () {
-                        $rootScope.loaderVisibility = false;
+                        if (text == 'ReuseLoader') {
+                            $rootScope.ReuseLoaderVisibility = false;
+                        }
+                        else if (text == 'ReuseSubtypeLoader') {
+                            $rootScope.ReuseSubtypeLoaderVisibility = false;
+                        }
                         $rootScope.showcontent = true;
                         var mask = $('#pageloadercontroller')
                       //.css({
@@ -74,7 +91,12 @@
             (function () {
                 setTimeout(function () {
                     $rootScope.$apply(function () {
-                        $rootScope.loaderVisibility = true;
+                        if (text == 'ReuseLoader') {
+                            $rootScope.ReuseLoaderVisibility = true;
+                        }
+                        else if (text == 'ReuseSubtypeLoader') {
+                            $rootScope.ReuseSubtypeLoaderVisibility = true;
+                        }
                         $rootScope.showcontent = false;
                         var mask = $('<div></div>')
                         .css({
@@ -104,7 +126,12 @@
             (function () {
                 setTimeout(function () {
                     $rootScope.$apply(function () {
-                        $rootScope.loaderVisibility = false;
+                        if (text == 'ReuseLoader') {
+                            $rootScope.ReuseLoaderVisibility = false;
+                        }
+                        else if (text == 'ReuseSubtypeLoader') {
+                            $rootScope.ReuseSubtypeLoaderVisibility = false;
+                        }
                         $rootScope.showcontent = true;
                         var mask = $('#pageloadercontroller')
                       //.css({
