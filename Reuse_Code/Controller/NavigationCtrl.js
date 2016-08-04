@@ -32,6 +32,7 @@
              success: function (a) {
                  var data = JSON.parse(JSON.stringify(a.d));
                  $scope.$apply(function () {
+                     
                      $scope.WrapperClassesInfo = data;
                      AppService.HideLoader('ReuseLoader');
                  });

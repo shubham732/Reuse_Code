@@ -1,4 +1,22 @@
-﻿.LoaderText
+﻿      #LoaderAnime{
+             background: #616165;
+            height:100%;
+            width:100%;
+            top:0px;
+            left:0px;
+              width: 100vw;
+              height: 100vh;
+              overflow: hidden;
+            position:fixed;
+            text-align:center;
+            color:white;
+            font-weight:bold;
+            transition:all 0.3s ease-in;
+            z-index:10000;
+             opacity: 0.5;
+        }
+        
+.LoaderText
 {
     text-align:center;
     color:white;
@@ -21,7 +39,7 @@
 	left: 50%;
     top:50%;
 	overflow: hidden;
-	z-index:1000000;
+	z-index:1000000 !important;
 	width: 650px;
 	height: 650px;
 	

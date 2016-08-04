@@ -1,7 +1,7 @@
 ﻿var myapp = angular.module("myApp", ['ngSanitize','ngRoute']);
 
-    myapp.config(['$routeProvider',
-                      function ($routeProvider) {
+myapp.config(['$routeProvider','$locationProvider',
+                      function ($routeProvider, $locationProvider) {
                           $routeProvider
                             
                               .when('/Wrapper', {
@@ -27,7 +27,11 @@
                             .otherwise({
                                 redirectTo: '/Wrapper'
                             });
-                      }]);
+                          $locationProvider.html5Mode(true);
+                      }
+                     
+    ]);
+  
     
     myapp.run(function ($rootScope, $location) {
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
@@ -38,7 +42,7 @@
     })
     myapp.filter('breakFilter', function () {
         return function (text) {
-            if (text !== undefined) return text.replace(/\n/g, '<br />');
+            if (text !== undefined) return text.replace(/\n/g, '&#13;&#10');
         };
     });
   

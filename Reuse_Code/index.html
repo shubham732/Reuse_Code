@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <base href="/">
     <title>responsive design </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,8 +39,10 @@
     <div class="container-fluid">
         <div class="row">
             
-           
-            <!--<div class="cssload-loader" ng-if="ReuseLoaderVisibility">
+            <div id="LoaderAnime" ng-if="ReuseLoaderVisibility">
+              
+            </div>
+            <div class="cssload-loader" ng-if="ReuseLoaderVisibility">
 
                 <div class="cssload-dots">
                     <div class="cssload-dot"></div>
@@ -56,8 +59,8 @@
                     just a moment...
                 </div>
 
-            </div>-->
-            <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom:0px">
+            </div>
+            <nav class="navbar navbar-default navbar-fixed-top " style="margin-bottom:0px">
 
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
